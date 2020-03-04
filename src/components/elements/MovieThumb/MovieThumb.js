@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Proptypes from 'prop-types';
 import './MovieThumb.css';
 
 const MovieThumb = (props) => {
@@ -14,6 +15,12 @@ const MovieThumb = (props) => {
             }
         </div>
     )
+}
+
+MovieThumb.Proptypes = {
+    image: Proptypes.string,
+    movieId: Proptypes.number,
+    movieName: Proptypes.string
 }
 
 export default MovieThumb;

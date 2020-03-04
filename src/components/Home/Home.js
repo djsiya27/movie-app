@@ -19,9 +19,14 @@ class Home extends Component {
   }
 
   componentDidMount() {
+      if (localStorage.getItem('Homestate')) {
+        const state = JSON.parse(localStorage.getItem('HomeState'));
+        this.setState({ ...state });
+      } else {
     this.setState({ loading: true });
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}`;
     this.fetchItems(endpoint);
+      }
   }
 
   searchItems = (searchTerm) => {
@@ -63,6 +68,10 @@ class Home extends Component {
         loading: false,
         currentPage: result.page,
         totalPages: result.total_pages
+      }, () => {
+          if (this.state.searchTerm === "") {
+          localStorage.setItem('HomeState', JSON.stringify(this.state));
+          }
       })
     })
     .catch(error => console.error('Error:', error))
