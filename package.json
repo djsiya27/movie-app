@@ -23,6 +23,7 @@
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
+    "gh-pages": "^2.2.0",
     "react": "^16.13.0",
     "react-fontawesome": "^1.7.1"
   },
